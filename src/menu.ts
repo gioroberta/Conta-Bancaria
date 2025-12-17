@@ -1,7 +1,9 @@
 
 import * as readline from "readline-sync";
 import { colors } from "./util/colors";
-import { Conta } from "./model/conta";
+import { Conta } from "./model/Conta";
+import { ContaCorrente } from "./model/ContaCorrente";
+import { ContaPoupanca } from "./model/ContaPoupanca";
 
 export function main () {
 
@@ -14,6 +16,22 @@ let opcao: number;
     conta.visualizar();
     conta.depositar(5000);
     conta.visualizar();
+
+    // Objeto da Classe ContaCorrente (Teste)
+    const contacorrente: ContaCorrente = new ContaCorrente(2, 123, 1, "Mariana", 15000, 1000);
+    contacorrente.visualizar();
+    contacorrente.sacar(2000);
+    contacorrente.visualizar();
+    contacorrente.depositar(1000);
+    contacorrente.visualizar();
+
+    // Objeto da Classe ContaPoupanca (teste)
+    const contapoupanca: ContaPoupanca = new ContaPoupanca(3, 123, 2, "Victor", 1000, 10);
+    contapoupanca.visualizar();
+    contapoupanca.sacar(200);
+    contapoupanca.visualizar();
+    contapoupanca.depositar(1000);
+    contapoupanca.visualizar();
 
 while (true) {
 
@@ -44,7 +62,7 @@ while (true) {
 
     if (opcao == 9) {
         console.log(colors.fg.greenstrong,
-                    "/n Banco do Brazil com Z - o seu futuro começa aqui!")
+                    "\n Banco do Brazil com Z - o seu futuro começa aqui!")
         sobre();
         console.log(colors.reset, "")
         process.exit(0);
@@ -109,7 +127,7 @@ while (true) {
         
         default:
             console.log(colors.fg.whitestrong,
-                        "/n Opção inválida /n", colors.reset);
+                        "\n Opção inválida /n", colors.reset);
 
             keyPress();
             break;
